@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>DARK PREMIUM | JHON VAULT</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: radial-gradient(circle at 20% 30%, #0a0a0a, #030303);
+            font-family: 'Poppins', 'Segoe UI', system-ui, sans-serif;
+            min-height: 100vh;
+            padding: 30px 20px;
+            color: #eee;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* header gaya jailbreak */
+        .jailbreak-header {
+            text-align: center;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(16px);
+            border-radius: 3rem;
+            padding: 25px 20px;
+            margin-bottom: 35px;
+            border: 2px solid;
+            border-image: linear-gradient(45deg, #ff00cc, #ffcc00, #00ffcc, #ff00aa) 1;
+            animation: borderPulse 3s infinite;
+        }
+        @keyframes borderPulse {
+            0% { border-color: #ff00cc; box-shadow: 0 0 10px #ff00cc; }
+            50% { border-color: #00ffcc; box-shadow: 0 0 20px #00ffcc; }
+            100% { border-color: #ffcc00; box-shadow: 0 0 10px #ffcc00; }
+        }
+        .jailbreak-header h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff, #aaa, #fff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .hash-tag {
+            font-size: 1.3rem;
+            margin-top: 15px;
+            background: linear-gradient(45deg, gold, hotpink, cyan);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: bold;
+        }
+
+        /* panel pesan */
+        .messages-panel {
+            background: rgba(20, 20, 30, 0.75);
+            backdrop-filter: blur(10px);
+            border-radius: 2rem;
+            padding: 25px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255,255,255,0.15);
+        }
+        .section-title {
+            font-size: 1.7rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            border-left: 6px solid #ff44cc;
+            padding-left: 18px;
+        }
+        .message-list {
+            max-height: 460px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .message-item {
+            background: #0f0f17;
+            border-radius: 1.2rem;
+            padding: 16px 20px;
+            transition: 0.2s;
+            border: 1px solid #2a2a3a;
+        }
+        .message-item:hover {
+            background: #1a1a2a;
+            border-color: #ff66cc;
+        }
+        .msg-nomer {
+            font-size: 0.8rem;
+            color: #ffaa66;
+            font-weight: bold;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .msg-text {
+            font-size: 1rem;
+            white-space: pre-wrap;
+            color: #f5f5f5;
+        }
+        .msg-date {
+            font-size: 0.7rem;
+            color: #999;
+            margin-top: 8px;
+            text-align: right;
+        }
+
+        /* grid untuk owner + premium */
+        .grid-2col {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin-top: 20px;
+        }
+        .card {
+            flex: 1;
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(12px);
+            border-radius: 1.8rem;
+            padding: 24px;
+            border: 1px solid #ff44aa;
+        }
+        .card h3 {
+            color: #ffaa88;
+            margin-bottom: 18px;
+            border-bottom: 1px dashed #ff44aa;
+            display: inline-block;
+        }
+        .input-field {
+            margin-bottom: 18px;
+        }
+        .input-field label {
+            display: block;
+            margin-bottom: 6px;
+            color: #ffbb99;
+            font-size: 0.85rem;
+        }
+        input, textarea {
+            width: 100%;
+            background: #1e1e2a;
+            border: 1px solid #3a3a4a;
+            padding: 12px 16px;
+            border-radius: 1rem;
+            color: white;
+            font-family: inherit;
+        }
+        input:focus, textarea:focus {
+            border-color: #ff66cc;
+            outline: none;
+        }
+        button {
+            background: linear-gradient(95deg, #ff44aa, #ff8844);
+            border: none;
+            padding: 12px 20px;
+            border-radius: 2rem;
+            font-weight: bold;
+            color: black;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1rem;
+            transition: 0.2s;
+        }
+        button:hover {
+            filter: brightness(1.1);
+            transform: translateY(-2px);
+        }
+        .danger-btn {
+            background: linear-gradient(95deg, #aa2222, #ff5555);
+            color: white;
+        }
+        .premium-badge {
+            background: gold;
+            color: black;
+            padding: 5px 12px;
+            border-radius: 40px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-left: 10px;
+        }
+        .note {
+            font-size: 0.7rem;
+            color: #aaa;
+            text-align: center;
+            margin-top: 15px;
+        }
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 0.7rem;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="jailbreak-header">
+        <h1>WEB TEKS PROMT JAILBREK INI</h1>
+        <div class="hash-tag">#kreditjhon #webjhon #no jual #no sale dll, 🤘✌️🗿</div>
+        <div class="credit-line">⚡ DARK VAULT | OWNER: JHON ⚡</div>
+    </div>
+
+    <!-- DAFTAR PESAN -->
+    <div class="messages-panel">
+        <div class="section-title">📜 SEMUA PESAN (tak terbatas)</div>
+        <div id="messageList" class="message-list">
+            <div class="empty-message">Loading pesan...</div>
+        </div>
+    </div>
+
+    <!-- OWNER & PREMIUM -->
+    <div class="grid-2col">
+        <!-- OWNER AREA (password 201029) -->
+        <div class="card">
+            <h3>👑 OWNER CONTROL <span style="font-size:12px;">(password rahasia)</span></h3>
+            <div class="input-field">
+                <label>🔒 PASSWORD OWNER</label>
+                <input type="password" id="ownerPass" placeholder="********">
+            </div>
+            <div class="input-field">
+                <label>📝 TAMBAH PESAN (owner)</label>
+                <textarea id="ownerMsg" rows="2" placeholder="Tulis pesan baru..."></textarea>
+                <button id="btnOwnerAdd">➕ SIMPAN SEBAGAI OWNER</button>
+            </div>
+            <div class="input-field" style="margin-top:20px;">
+                <label>🗑️ HAPUS PESAN (masukkan nomor)</label>
+                <input type="number" id="deleteNumber" placeholder="Nomor pesan (1,2,3...)">
+                <button id="btnOwnerDelete" class="danger-btn">⚠️ HAPUS PESAN</button>
+            </div>
+            <div class="note">Password owner: hanya yang tahu bisa tambah/hapus. Tidak terlihat di halaman.</div>
+        </div>
+
+        <!-- PREMIUM SHOP & AKTIVASI -->
+        <div class="card">
+            <h3>💎 PREMIUM MEMBERSHIP <span id="premiumStatusBadge" class="premium-badge">NON PREMIUM</span></h3>
+            <div class="input-field">
+                <label>💰 HARGA PREMIUM: Rp 50.000 (sekali bayar, akses seumur hidup)</label>
+                <label>📲 BAYAR KE: DANA / OVO 0895-1234-5678 a.n. JHON</label>
+                <label>🔑 SETELAH BAYAR, HUBUNGI WA 08123456789 UNTUK MENDAPATKAN KODE PREMIUM</label>
+            </div>
+            <div class="input-field">
+                <label>🎫 MASUKKAN KODE PREMIUM</label>
+                <input type="text" id="premiumCode" placeholder="Kode dari owner">
+                <button id="btnActivatePremium">AKTIFKAN PREMIUM</button>
+            </div>
+            <div class="input-field" id="premiumAddSection" style="display:none;">
+                <label>✨ TAMBAH PESAN (PREMIUM USER - tanpa password)</label>
+                <textarea id="premiumMsg" rows="2" placeholder="Tulis pesan..."></textarea>
+                <button id="btnPremiumAdd">💎 TAMBAH PESAN PREMIUM</button>
+            </div>
+            <div class="note">Premium user bisa menambah pesan tanpa password owner. Hanya owner yang bisa menghapus.</div>
+        </div>
+    </div>
+    <footer>© DARK JAILBREAK | JHON CONTROL | PREMIUM FEATURE ACTIVE</footer>
+</div>
+
+<script>
+    // ========== KONFIGURASI ==========
+    const STORAGE_KEY = 'jhon_jailbreak_messages';
+    const OWNER_PASSWORD = '201029';     // password owner (tidak terpampang)
+    const PREMIUM_CODE = 'JHONPREMIUM2025';  // kode premium default (owner bisa ganti di sini)
+    
+    let messages = [];
+    let isPremium = false;   // status premium user browser ini
+
+    // load from localStorage
+    function loadMessages() {
+        const stored = localStorage.getItem(STORAGE_KEY);
+        if (stored) {
+            try {
+                messages = JSON.parse(stored);
+                if (!Array.isArray(messages)) messages = [];
+            } catch(e) { messages = []; }
+        } else {
+            messages = [];
+        }
+        renderMessages();
+    }
+
+    function saveMessages() {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(messages));
+        renderMessages();
+    }
+
+    // render
+    function renderMessages() {
+        const container = document.getElementById('messageList');
+        if (!container) return;
+        if (messages.length === 0) {
+            container.innerHTML = `<div class="empty-message">📭 Belum ada pesan. Owner atau premium bisa menambah.</div>`;
+            return;
+        }
+        let html = '';
+        messages.forEach((msg, idx) => {
+            const nomor = idx + 1;
+            html += `
+                <div class="message-item">
+                    <div class="msg-nomer">
+                        <span>📌 PESAN ${nomor}</span>
+                        <span style="font-size:11px;">${msg.date}</span>
+                    </div>
+                    <div class="msg-text">${escapeHtml(msg.text)}</div>
+                </div>
+            `;
+        });
+        container.innerHTML = html;
+    }
+
+    function escapeHtml(str) {
+        return str.replace(/[&<>]/g, function(m) {
+            if (m === '&') return '&amp;';
+            if (m === '<') return '&lt;';
+            if (m === '>') return '&gt;';
+            return m;
+        });
+    }
+
+    // tambah pesan (umum)
+    function addMessage(text) {
+        if (!text || text.trim() === "") {
+            alert("Pesan tidak boleh kosong!");
+            return false;
+        }
+        const newMsg = {
+            id: Date.now() + Math.random(),
+            text: text.trim(),
+            date: new Date().toLocaleString('id-ID', { hour12: false })
+        };
+        messages.unshift(newMsg);
+        saveMessages();
+        return true;
+    }
+
+    // hapus pesan by nomor (owner only)
+    function deleteMessageByNumber(password, nomorUrut) {
+        if (password !== OWNER_PASSWORD) {
+            alert("❌ PASSWORD OWNER SALAH! Hanya owner yang bisa hapus.");
+            return false;
+        }
+        if (messages.length === 0) {
+            alert("Tidak ada pesan.");
+            return false;
+        }
+        if (isNaN(nomorUrut) || nomorUrut < 1 || nomorUrut > messages.length) {
+            alert(`Nomor pesan harus 1 - ${messages.length}`);
+            return false;
+        }
+        messages.splice(nomorUrut - 1, 1);
+        saveMessages();
+        alert(`✅ Pesan nomor ${nomorUrut} berhasil dihapus.`);
+        return true;
+    }
+
+    // premium activation
+    function activatePremium(code) {
+        if (code === PREMIUM_CODE) {
+            isPremium = true;
+            localStorage.setItem('jhon_premium_status', 'true');
+            document.getElementById('premiumStatusBadge').innerText = 'PREMIUM ACTIVE';
+            document.getElementById('premiumStatusBadge').style.background = '#00cc88';
+            document.getElementById('premiumAddSection').style.display = 'block';
+            alert("✅ PREMIUM AKTIF! Sekarang lo bisa tambah pesan tanpa password owner.");
+            return true;
+        } else {
+            alert("❌ KODE PREMIUM SALAH! Beli dulu ke owner.");
+            return false;
+        }
+    }
+
+    // load premium status dari localStorage
+    function loadPremiumStatus() {
+        const saved = localStorage.getItem('jhon_premium_status');
+        if (saved === 'true') {
+            isPremium = true;
+            document.getElementById('premiumStatusBadge').innerText = 'PREMIUM ACTIVE';
+            document.getElementById('premiumStatusBadge').style.background = '#00cc88';
+            document.getElementById('premiumAddSection').style.display = 'block';
+        } else {
+            isPremium = false;
+        }
+    }
+
+    // EVENT LISTENERS
+    document.addEventListener('DOMContentLoaded', () => {
+        loadMessages();
+        loadPremiumStatus();
+
+        // Owner tambah pesan
+        document.getElementById('btnOwnerAdd').addEventListener('click', () => {
+            const pass = document.getElementById('ownerPass').value;
+            const msg = document.getElementById('ownerMsg').value;
+            if (pass !== OWNER_PASSWORD) {
+                alert("Password owner salah!");
+                return;
+            }
+            if (addMessage(msg)) {
+                document.getElementById('ownerMsg').value = '';
+                document.getElementById('ownerPass').value = '';
+                alert("Pesan owner ditambahkan.");
+            }
+        });
+
+        // Owner hapus pesan
+        document.getElementById('btnOwnerDelete').addEventListener('click', () => {
+            const pass = document.getElementById('ownerPass').value;
+            const nomor = parseInt(document.getElementById('deleteNumber').value, 10);
+            deleteMessageByNumber(pass, nomor);
+            document.getElementById('ownerPass').value = '';
+            document.getElementById('deleteNumber').value = '';
+        });
+
+        // Aktivasi premium
+        document.getElementById('btnActivatePremium').addEventListener('click', () => {
+            const code = document.getElementById('premiumCode').value;
+            activatePremium(code);
+            document.getElementById('premiumCode').value = '';
+        });
+
+        // Premium tambah pesan
+        document.getElementById('btnPremiumAdd').addEventListener('click', () => {
+            if (!isPremium) {
+                alert("Lo belum premium! Beli dulu.");
+                return;
+            }
+            const msg = document.getElementById('premiumMsg').value;
+            if (addMessage(msg)) {
+                document.getElementById('premiumMsg').value = '';
+                alert("Pesan premium ditambahkan.");
+            }
+        });
+    });
+</script>
+</body>
+  </html>
